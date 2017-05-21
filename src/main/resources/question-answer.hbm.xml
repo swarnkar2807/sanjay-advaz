@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+	<class name="hibernate.collection.listmapping.Questions" table="question">
+		<id name="queId">
+			<generator class="increment" />
+		</id>
+		<property name="queName"></property>
+		<property name="parentQue"></property>
+		<property name="typeOfAnswer"></property>
+		
+		<list name="answer" cascade="all">
+			<key column="ansId"></key>
+			<index column="type"></index>
+			<one-to-many class="hibernate.collection.listmapping.Answers"></one-to-many>
+		</list>
+
+	</class>
+	<class name="hibernate.collection.listmapping.Answers" table="answer_list1">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property name="ansString"></property>
+		<property name="posterName"></property>
+	</class>
+
+</hibernate-mapping>

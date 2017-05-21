@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Test</title>
+	
+	<link href="style/css/bootstrap.min.css" type="text/css" rel="stylesheet" MEDIA="screen"> 
+</head>
+
+<body>
+
+<div class="container-fluid" style="margin-left:20px">
+  <div class="row" id="parent">
+     <div class="col-md-4">
+	  <button class="btn btn-primary" id="addQuestion">Add Question</button>
+      <button class="btn btn-danger" id ="removeQuestion">Remove Question</button>
+   </div>
+  </div>
+</div>
+
+<div class="row" id="fotter" style ="display:none" >
+     <div class="col-md-4">
+	  <button class="btn btn-primary" id="save">Save</button>
+      <button class="btn btn-danger" id ="cancel">Cancel</button>
+   </div>
+  </div>
+
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" >
+	
+	$(document).ready(function() {
+		var intRow = 0;
+		var subQ = 0;
+	
+		$("#addQuestion").on("click",function(e){ 
+			e.preventDefault();
+			intRow++;
+			$(".container-fluid").append('<div class="row" id="row'+ intRow +'" style= "margin: 0 0 5px 0">'+
+					'<div class="row" id="ques'+ intRow +'"><div class="col-md-4"><input type="text" class="form-control input-md" placeholder="Medium"></div>'+
+					'<div class="col-md-2"><select class="form-control" id="quesType"><option>select</option><option value="multiLine">Multi-line Answer</option>'+
+					'<option value="singleChoice">Single choice</option><option value="multiChoice">multi choice</option></select></div>'+
+					'<div class="col-md-1" id="addSubButtonDiv"><button class="btn btn-success" id="addSub">Add Sub Question</button></div></div></div>');
+			
+			$('#fotter').show(500);
+		});
+		
+		$("#removeQuestion").on("click",function(e){ 
+			console.log("Remove " + intRow);
+			if(intRow > 0) {
+				$('#row' + intRow+' div').remove();
+				intRow--;
+			} else{
+				$('#fotter').hide(500);
+			}
+		});
+		
+		$(document).on("click", "#addSub", function() {
+			subQ++;
+			var clone_details = $(this).parent('div').parent('div').clone(true); 
+		//	$(clone_details).find('addSubButtonDiv').remove();
+			$(clone_details).attr("id", "subQuestion"+intRow+"_"+subQ);
+			
+			clone_details.css({'margin':'20px 0 0 0'});
+		   $(this).parent('div').parent('div').parent('div').append(clone_details);
+		});
+
+		$(document).on('change', '#quesType', function() {
+            console.log("change : " + $(this).val());
+		    var id = "input" + $(this).attr("id").replace("field","");
+			var subRowId = $(this).parent('div').parent('div').attr("id").replace("field","");
+			console.log("subRowId : " +subRowId);
+			//console.log("id : " +id);
+		    var input;
+            switch ($(this).val()) {
+                case "multiChoice":
+                    input = $('<div id="'+subRowId+'subRow" ><input type="text" id="'+ id + '" name="' + id + '" /> <input type="text" id="'+ id + '" name="' + id + '" /></div>');
+                    break;
+                case "singleChoice":
+                    input = $('<div id="'+subRowId+'subRow" ><input type="text" id="' + id + '" name="' + id + '" /></div>');
+                    break;
+                case "multiLine":
+                    input = $('<div id="'+subRowId+'subRow"><textarea id="' + id + '" name="'+ id + '" ></textarea> </div>');
+                    break;    
+            }
+
+			var str=$(this).parent('div').parent('div').attr("id");
+ 			if (str != null && str.match("^subQuestion")) {
+   				console.log("in  sub question");
+   				$(input).css({'margin-left':'20px'});
+ 			}
+ 			
+			$('div#'+subRowId+'subRow').remove();
+			input.insertAfter($(this).parent('div').parent('div'));
+		});
+	});
+
+</script>
+</html>
