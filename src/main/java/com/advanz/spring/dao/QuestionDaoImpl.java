@@ -19,7 +19,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		template = new JdbcTemplate(ds);
 	}
 	public int addNewQuestion() {
-		String sql = "insert into question (que_name, )" 
+//		String sql = "insert into question (que_name, )" 
 //		KeyHolder holder = new GeneratedKeyHolder();
 //		template.update(new PreparedStatementCreator() {
 //			String sql = "insert into question ()" 

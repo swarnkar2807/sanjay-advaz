@@ -20,14 +20,14 @@ public class QuestionAPI {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response addQuestions(Question question){
-		System.out.println(question.getId());
+		System.out.println(question.getQueId());
 		System.out.println(question.getParentQue());
-		System.out.println(question.getQuestion());
+		System.out.println(question.getQueName());
 		System.out.println(question.getTypeOfAnswer());
 //		System.out.println(question.getAnswers().toString());
-		for(String a: question.getAnswers()){
-			System.out.println(a);
-		}
+//		for(String a: question.getAnswers()){
+//			System.out.println(a);
+//		}
 		return Response.ok(Response.ok()).entity("Add SuccessFully").build();
 		
 	}

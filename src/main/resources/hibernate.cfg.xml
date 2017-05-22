@@ -20,7 +20,6 @@
 <!-- Related to hibernate properties END -->
  
 <!-- Related to mapping START -->
-<!-- <mapping resource="employee.hbm.xml" /> -->
 <mapping resource="question-answer.hbm.xml"/>
 
 

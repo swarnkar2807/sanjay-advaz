@@ -41,7 +41,7 @@
 					'<div class="row" id="ques'+ intRow +'"><div class="col-md-4"><input type="text" class="form-control input-md" placeholder="Medium"></div>'+
 					'<div class="col-md-2"><select class="form-control" id="quesType"><option>select</option><option value="multiLine">Multi-line Answer</option>'+
 					'<option value="singleChoice">Single choice</option><option value="multiChoice">multi choice</option></select></div>'+
-					'<div class="col-md-1" id="addSubButtonDiv"><button class="btn btn-success" id="addSub">Add Sub Question</button></div></div></div>');
+					'<div class="col-md-1" id='+intRow+'><button class="btn btn-success" id="addSub">Add Sub Question</button></div></div></div>');
 			
 			$('#fotter').show(500);
 		});
@@ -59,8 +59,11 @@
 		$(document).on("click", "#addSub", function() {
 			subQ++;
 			var clone_details = $(this).parent('div').parent('div').clone(true); 
-		//	$(clone_details).find('addSubButtonDiv').remove();
-			$(clone_details).attr("id", "subQuestion"+intRow+"_"+subQ);
+// 			$(clone_details).filter().remove();
+			var currRowId= $(this).parent('div').attr("id");
+			$(this).hide();
+
+			$(clone_details).attr("id", "subQuestion"+currRowId+"_"+subQ);
 			
 			clone_details.css({'margin':'20px 0 0 0'});
 		   $(this).parent('div').parent('div').parent('div').append(clone_details);

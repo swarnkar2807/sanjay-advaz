@@ -1,26 +1,27 @@
 package com.advanz.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
 
-	private int id;
+	private int queId;
 	private String queName;
 	private int parentQue;
 	private String typeOfAnswer;
-	private List<String> answers;
+	private List<Answer> answers;
 	
-	public int getId() {
-		return id;
+	public int getQueId() {
+		return queId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setQueId(int queId) {
+		this.queId = queId;
 	}
-	public String getQuestion() {
+	public String getQueName() {
 		return queName;
 	}
-	public void setQuestion(String question) {
-		this.queName = question;
+	public void setQueName(String queName) {
+		this.queName = queName;
 	}
 	public int getParentQue() {
 		return parentQue;
@@ -34,12 +35,15 @@ public class Question {
 	public void setTypeOfAnswer(String typeOfAnswer) {
 		this.typeOfAnswer = typeOfAnswer;
 	}
-	public List<String> getAnswers() {
+	public List<Answer> getAnswers() {
 		return answers;
 	}
-	public void setAnswers(List<String> answers) {
+	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
+	
+	
+	
 	
 		
 }
