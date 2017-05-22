@@ -16,4 +16,7 @@ public class QuestionBinder {
 		txn.commit();
 		HibernateSession.closedConnection();
 	}
+	public Question getQuestion(){
+		return null;
+	}
 }

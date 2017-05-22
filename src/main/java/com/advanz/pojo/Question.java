@@ -1,8 +1,11 @@
 package com.advanz.pojo;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties(ignoreUnknown =true)
 public class Question {
 
 	private int queId;
@@ -40,6 +43,11 @@ public class Question {
 	}
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+	@Override
+	public String toString() {
+		return "Question [queId=" + queId + ", queName=" + queName + ", parentQue=" + parentQue + ", typeOfAnswer="
+				+ typeOfAnswer + ", answers=" + answers + "]";
 	}
 	
 	

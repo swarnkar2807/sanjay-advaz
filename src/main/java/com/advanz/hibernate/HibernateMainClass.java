@@ -23,11 +23,7 @@ public class HibernateMainClass {
 		Session session = HibernateSession.getHibernateSession();
 		Transaction txn = session.beginTransaction();
 		
-//		Employee emp = new Employee();
-//		annotation.hibernate.Employee emp = new annotation.hibernate.Employee();
-		
 		Question que = new Question();
-//		que.setId(id);
 		que.setParentQue(0);
 		que.setQueName("JAVA is OOPS");
 		que.setTypeOfAnswer("MultiLine");

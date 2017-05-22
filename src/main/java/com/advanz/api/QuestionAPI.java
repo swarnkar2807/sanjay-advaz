@@ -15,19 +15,25 @@ import com.advanz.pojo.Question;
 @Path("/sanjay")
 public class QuestionAPI {
 
+	@Path("/addQuestion")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addQuestion(Question question){
+		
+		
+		return Response.ok(Response.ok()).entity("Add SuccessFully").build();
+		
+	}
 	@Path("/addQuestions")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addQuestions(Question question){
-		System.out.println(question.getQueId());
-		System.out.println(question.getParentQue());
-		System.out.println(question.getQueName());
-		System.out.println(question.getTypeOfAnswer());
-//		System.out.println(question.getAnswers().toString());
-//		for(String a: question.getAnswers()){
-//			System.out.println(a);
-//		}
+	public Response addQuestions(List<Question> question){
+		for(Question q: question){
+			
+		}
+		
 		return Response.ok(Response.ok()).entity("Add SuccessFully").build();
 		
 	}
