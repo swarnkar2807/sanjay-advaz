@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <hibernate-mapping>
-	<class name="com.advanz.pojo.Question" table="question">
+	<class name="com.advanz.dto.QuestionDto" table="question">
 		<id name="queId">
 			<generator class="increment" />
 		</id>
@@ -12,11 +12,11 @@
 		<list name="answers" cascade="all">
 			 <key column="qid"></key>
 			<index column="type"></index>
-			<one-to-many class="com.advanz.pojo.Answer"></one-to-many>
+			<one-to-many class="com.advanz.dto.AnswerDto"></one-to-many>
 		</list>
 
 	</class>
-	<class name="com.advanz.pojo.Answer" table="answer">
+	<class name="com.advanz.dto.AnswerDto" table="answer">
 		<id name="ansId">
 			<generator class="increment" />
 		</id>

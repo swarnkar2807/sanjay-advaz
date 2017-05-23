@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.advanz.dto.AnswerDto;
+import com.advanz.dto.QuestionDto;
 import com.advanz.pojo.Answer;
 import com.advanz.pojo.Question;
 
@@ -13,8 +15,10 @@ import com.advanz.pojo.Question;
 public class HibernateMainClass {
 
 	public static void main(String[] a){
-		HibernateMainClass hbm= new HibernateMainClass();
-		hbm.saveObject();
+//		HibernateMainClass hbm= new HibernateMainClass();
+//		hbm.saveObject();
+		QuestionManager manager = new QuestionManager();
+		System.out.println(manager.getQueId("JAVA is OOPS"));
 		
 //		hbm.getObject();
 	}
@@ -23,17 +27,17 @@ public class HibernateMainClass {
 		Session session = HibernateSession.getHibernateSession();
 		Transaction txn = session.beginTransaction();
 		
-		Question que = new Question();
+		QuestionDto que = new QuestionDto();
 		que.setParentQue(0);
 		que.setQueName("JAVA is OOPS");
 		que.setTypeOfAnswer("MultiLine");
-		Answer answers = new Answer();
+		AnswerDto answers = new AnswerDto();
 		answers.setAnswerName("Object orientd langauage");
-		Answer answers1 = new Answer();
+		AnswerDto answers1 = new AnswerDto();
 		answers1.setAnswerName("Oooooo");
 		
 		
-		List<Answer> ansList = new ArrayList<Answer>();
+		List<AnswerDto> ansList = new ArrayList<AnswerDto>();
 		ansList.add(answers);
 		ansList.add(answers1);
 		que.setAnswers(ansList);

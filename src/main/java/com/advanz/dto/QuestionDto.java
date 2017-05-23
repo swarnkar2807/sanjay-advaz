@@ -1,15 +1,16 @@
-package com.advanz.pojo;
+package com.advanz.dto;
 
 import java.util.List;
 
 
-public class Question {
+public class QuestionDto {
 
 	private int queId;
 	private String queName;
-	private String parentQue;
+	private int parentQue;
 	private String typeOfAnswer;
-	private List<Answer> answers;
+	private List<AnswerDto> answers;
+	
 	public int getQueId() {
 		return queId;
 	}
@@ -22,10 +23,10 @@ public class Question {
 	public void setQueName(String queName) {
 		this.queName = queName;
 	}
-	public String getParentQue() {
+	public int getParentQue() {
 		return parentQue;
 	}
-	public void setParentQue(String parentQue) {
+	public void setParentQue(int parentQue) {
 		this.parentQue = parentQue;
 	}
 	public String getTypeOfAnswer() {
@@ -34,10 +35,10 @@ public class Question {
 	public void setTypeOfAnswer(String typeOfAnswer) {
 		this.typeOfAnswer = typeOfAnswer;
 	}
-	public List<Answer> getAnswers() {
+	public List<AnswerDto> getAnswers() {
 		return answers;
 	}
-	public void setAnswers(List<Answer> answers) {
+	public void setAnswers(List<AnswerDto> answers) {
 		this.answers = answers;
 	}
 	@Override
@@ -45,7 +46,6 @@ public class Question {
 		return "Question [queId=" + queId + ", queName=" + queName + ", parentQue=" + parentQue + ", typeOfAnswer="
 				+ typeOfAnswer + ", answers=" + answers + "]";
 	}
-	
 	
 	
 	
